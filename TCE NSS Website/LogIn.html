@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NSS | TCE</title>
+	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/LogIn.css"/>
+	<link rel="stylesheet" href="css/footer.css"/>
+</head>
+<body>
+
+<header class="container">
+	<div class="row">
+    <img class="col-sm-6" src="image/TCE_NSS_Logo.png" alt="TCE_NSS_Logo" usemap="#logomap">
+    <map name="logomap">
+      <area shape="rect" coords="0,0,90,90" href="index.html" alt="NSS">
+      <area shape="rect" coords="500,0,560,90" href="http://tce.edu" alt="TCE">
+    </map>
+		<nav class="col-sm-6 navbar-static-top">
+        <a href="index.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">Home</a>
+        <a href="Objectives.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">Objectives</a>
+        <a href="Activities.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">Activities</a>
+        <a href="News.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">News</a>
+        <a href="Gallery.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">Gallery</a>
+        <a href="ContactUs2.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">ContactUs</a> 
+        <a href="LogIn.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">LogIn</a>
+        <script type="text/javascript">
+          function enlarge(x){
+            x.style.fontSize="20px";
+          }
+          function shrink(x){
+            x.style.fontSize="15px";
+          }
+        </script>
+    </nav>
+    <hr>
+	</div>
+  <hr style="background:#F87431; border:0; height:7px" />
+</header>
+
+	<h2 align="center">NSS staff co-ordinators can only Log In through this page.</h2>
+  <script type="text/javascript">
+    function changeColor(x){
+      x.style.background = "#b7b8ff";
+    }
+
+    function revertColor(x){
+      x.style.background = "white";
+    }
+
+    function changeCase(){
+      var x = document.getElementById("Username");
+      x.value = x.value.toLowerCase();
+    }
+  </script>
+	<div class = "container">
+	<div class="wrapper">
+				<form action="" method="post" name="Login_Form" class="form-signin">       
+		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+			  <hr class="colorgraph"><br>
+			  
+			  <input align="center" type="text" class="form-control" name="Username" id="Username" placeholder="Username" required="" autofocus="" onfocusin="changeColor(this)" onfocusout="revertColor(this)" onchange="changeCase()"/>
+			
+			  <input align="center" type="password" class="form-control" name="Password" placeholder="Password" required="" onfocusin="changeColor(this)" onfocusout="revertColor(this)"/>     		  
+						 
+			  <button background-color="orange" align="center" class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>  			
+		</form>			
+	</div>
+</div>
+
+<br><br>
+<div class="row">
+  <div class="col-lg-12">
+    <ul class="mendi-social-networks">
+
+      <li class="copyright">
+      <a href="" title="" target="blank_">
+        <p>Developed by GoTech!</p>
+        <span class="followers">&copy; TCE Madurai</span>
+      </a>
+      </li>
+
+      <li class="facebook">
+      <a href="https://www.facebook.com/National-Service-Scheme-TCE-677444149072063/" title="" target="blank_">
+        <p>JOIN US ON FACEBOOK</p>
+        <span class="followers">500+ Followers</span>
+      </a>
+      </li>
+
+      <li class="tce">
+      <a href="http://tce.edu" title="" target="blank_">
+        <p>TCE Madurai</p>
+        <span class="followers">A Temple of Learning</span>
+      </a>
+      </li>
+
+      <li class="linkedin">
+      <a href="" title="" target="blank_">
+        <p>CONNECT ON LINKEDIN</p>
+        <span class="followers">Know about our Volunteers</span>
+      </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

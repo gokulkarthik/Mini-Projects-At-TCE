@@ -1,0 +1,71 @@
+.mendi-social-networks {
+    width: 100%;
+    margin: 0;
+}
+.mendi-social-networks li {
+  float: left;
+  display: inline;
+  width: 25%; 
+  color: #ffffff;
+  position: relative;
+} 
+.mendi-social-networks li i {
+  font-size: 50px;
+  float: left;
+  width: 60px;
+}
+.mendi-social-networks li a {
+  color: #ffffff;
+  padding: 25px 65px 25px 40px;
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+    
+}
+.mendi-social-networks li a:hover {
+     text-decoration:none;    
+}
+.mendi-social-networks li p {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 2px 0 0px;
+}
+.mendi-social-networks li .followers {
+  /*text-transform: uppercase;*/
+}
+.mendi-social-networks li:before {
+  position: absolute;
+  content: "\f105";
+  right: 30px;
+  top: 0;
+  bottom: 0;
+  height: 30px;
+  width: 30px;
+  border: 1px solid #ffffff;
+  border-radius: 30px;
+  margin: auto;
+  font-size: 18px;
+  font-family: FontAwesome;
+  color: #ffffff;
+  text-align: center;
+  line-height: 26px;
+}
+.mendi-social-networks li:hover:before {
+  background-color: #ffffff;
+  color: #999999;
+}
+.mendi-social-networks li.copyright {
+  background-color: #fc4407;
+}
+.mendi-social-networks li.facebook {
+  background-color: #467dc4;
+}
+.mendi-social-networks li.tce {
+  background-color: #000000;
+}
+.mendi-social-networks li.linkedin {
+  background-color: #248cc9;
+}
+

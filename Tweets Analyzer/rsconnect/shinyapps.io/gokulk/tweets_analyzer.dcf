@@ -1,0 +1,11 @@
+name: tweets_analyzer
+title: tweets_analyzer
+account: gokulk
+server: shinyapps.io
+appId: 247082
+bundleId: 1129760
+url: https://gokulk.shinyapps.io/tweets_analyzer/
+when: 1513077942.3133
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|SocNet.R

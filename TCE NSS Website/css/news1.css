@@ -1,0 +1,46 @@
+news{
+	background-color: grey;
+	text-align: center;
+	font-size : 30px;
+}
+
+page{
+	background-color: 
+}
+
+head{
+	font-size: 40px;
+	text-align: center;
+	display : block;
+}
+
+headline{
+	font-size: 30px;
+	text-align: left;
+	display : block;
+	background-color: #42f4e8;
+}
+
+byline{
+	display: block;
+	text-align: left;
+	font-size: 15px;
+	background-color: #42f4e8;
+}
+
+location{
+	display: block;
+	text-align: left;
+	font-size: 20px;
+
+}
+
+date{
+	display: block;
+	text-align: left;
+	font-size: 20px;	
+}
+
+br{
+	display: block;
+}

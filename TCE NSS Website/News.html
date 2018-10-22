@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NSS | TCE</title>
+	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+  <link rel="stylesheet" href="css/news.css"/>
+  <script src="https://platform.twitter.com/widgets.js" async></script>
+</head>
+<body>
+
+<header class="container">
+	<div class="row">
+    <img class="col-sm-6" src="image/TCE_NSS_Logo.png" alt="TCE_NSS_Logo" usemap="#logomap">
+    <map name="logomap">
+      <area shape="rect" coords="0,0,90,90" href="index.html" alt="NSS">
+      <area shape="rect" coords="500,0,560,90" href="http://tce.edu" alt="TCE">
+    </map>
+		<nav class="col-sm-6 navbar-static-top">
+        <a href="index.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">Home</a>
+        <a href="Objectives.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">Objectives</a>
+        <a href="Activities.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">Activities</a>
+        <a href="News.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">News</a>
+        <a href="Gallery.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">Gallery</a>
+        <a href="ContactUs2.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">Contact</a> 
+        <!--a href="LogIn.html" onmouseover="enlarge(this)" onmouseout="shrink(this)">LogIn</a-->
+        <script type="text/javascript">
+          function enlarge(x){
+            x.style.fontSize="20px";
+          }
+          function shrink(x){
+            x.style.fontSize="15px";
+          }
+        </script>
+    </nav>
+    <hr>
+	</div>
+  <hr style="background:#F87431; border:0; height:7px" />
+</header>
+
+
+  <div class="container">
+    <h2 class="text-center">Latest  News</h2>
+    <div class="well" id = "n1">News1</div>
+    <div class="well" id = "n2">News2</div>
+    <div class="well" id = "n3">News3</div>
+  </div>
+
+ <script>
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+      }
+  };
+  xhttp.open("GET", "News.xml", true);
+  xhttp.send();
+
+  function myFunction(xml) {
+      var xmlDoc = xml.responseXML;
+      document.getElementById("n1").innerHTML =
+      xmlDoc.getElementsByTagName("headline")[0].childNodes[0].nodeValue;
+      document.getElementById("n2").innerHTML =
+      xmlDoc.getElementsByTagName("headline")[1].childNodes[0].nodeValue;
+      document.getElementById("n3").innerHTML = 
+      xmlDoc.getElementsByTagName("headline")[2].childNodes[0].nodeValue;
+  }
+  
+  </script>
+
+
+  <div class="container">
+  <a class="twitter-timeline" data-lang="en" data-width="1200" data-height="500" data-theme="dark" href="https://twitter.com/gokulkarthikk">Tweets by gokulkarthikk</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+
+<div class="container" style="padding-top:30px">
+    <h1 class="text-center">Testimonials</h1>
+    <div class="row">
+    <div class="col-sm-6">
+            <div id="tb-testimonial" class="testimonial testimonial-default-filled">
+                <div class="testimonial-section">
+                    text1
+              </div>
+                <div class="testimonial-desc">
+                    <img src="image/boy.png" alt="" />
+                    <div class="testimonial-writer">
+                      <div class="testimonial-writer-name">Name</div>
+                      <div class="testimonial-writer-designation">Batch</div>
+                      <a href="#" class="testimonial-writer-company">Department</a>
+                    </div>
+                </div>
+            </div>   
+    </div>
+        
+        <div class="col-sm-6">
+            <div id="tb-testimonial" class="testimonial testimonial-primary-filled">
+                <div class="testimonial-section">
+                    text2
+                </div>
+                <div class="testimonial-desc">
+                    <img src="image/girl.png" alt="" />
+                    <div class="testimonial-writer">
+                      <div class="testimonial-writer-name">Name</div>
+                      <div class="testimonial-writer-designation">Batch</div>
+                      <a href="#" class="testimonial-writer-company">Department</a>
+                    </div>
+                </div>
+            </div>   
+    </div>
+        
+        <div class="col-sm-6">
+            <div id="tb-testimonial" class="testimonial testimonial-info-filled">
+                <div class="testimonial-section">
+                    text3
+                </div>
+                <div class="testimonial-desc">
+                    <img src="image/boy.png" alt="" />
+                    <div class="testimonial-writer">
+                      <div class="testimonial-writer-name">Name</div>
+                      <div class="testimonial-writer-designation">Batch</div>
+                      <a href="#" class="testimonial-writer-company">Department</a>
+                    </div>
+                </div>
+            </div>   
+    </div>
+        
+        <div class="col-sm-6">
+            <div id="tb-testimonial" class="testimonial testimonial-success-filled">
+                <div class="testimonial-section">
+                    text4
+                </div>
+                <div class="testimonial-desc">
+                    <img src="image/girl.png" alt="" />
+                    <div class="testimonial-writer">
+                      <div class="testimonial-writer-name">Name</div>
+                      <div class="testimonial-writer-designation">Batch</div>
+                      <a href="#" class="testimonial-writer-company">Department</a>
+                    </div>
+                </div>
+            </div>   
+    </div>
+        
+        <div class="col-sm-6">
+            <div id="tb-testimonial" class="testimonial testimonial-warning-filled">
+                <div class="testimonial-section">
+                    text5
+                </div>
+                <div class="testimonial-desc">
+                    <img src="image/boy.png" alt="" />
+                    <div class="testimonial-writer">
+                      <div class="testimonial-writer-name">Name</div>
+                      <div class="testimonial-writer-designation">Batch</div>
+                      <a href="#" class="testimonial-writer-company">Department</a>
+                    </div>
+                </div>
+            </div>   
+    </div>
+        
+        <div class="col-sm-6">
+            <div id="tb-testimonial" class="testimonial testimonial-danger-filled">
+                <div class="testimonial-section">
+                   text6
+                </div>
+                <div class="testimonial-desc">
+                    <img src="image/girl.png" alt="" />
+                    <div class="testimonial-writer">
+                      <div class="testimonial-writer-name">Raghavendra</div>
+                      <div class="testimonial-writer-designation">Flex Incharge</div>
+                      <a href="#" class="testimonial-writer-company">Civil</a>
+                    </div>
+                </div>
+            </div>   
+    </div>
+  </div>
+</div>
+
+
+
+<br><br>
+<div class="row">
+  <div class="col-lg-12">
+    <ul class="mendi-social-networks">
+
+      <li class="copyright">
+      <a href="" title="" target="blank_">
+        <p>Developed by TCE ACM Team</p>
+        <span class="followers">&copy; TCE Madurai</span>
+      </a>
+      </li>
+
+      <li class="facebook">
+      <a href="https://www.facebook.com/National-Service-Scheme-TCE-677444149072063/" title="" target="blank_">
+        <p>JOIN US ON FACEBOOK</p>
+        <span class="followers">500+ Followers</span>
+      </a>
+      </li>
+
+      <li class="tce">
+      <a href="http://tce.edu" title="" target="blank_">
+        <p>TCE Madurai</p>
+        <span class="followers">A Temple of Learning</span>
+      </a>
+      </li>
+
+      <li class="linkedin">
+      <a href="" title="" target="blank_">
+        <p>CONNECT ON LINKEDIN</p>
+        <span class="followers">Know about our Volunteers</span>
+      </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

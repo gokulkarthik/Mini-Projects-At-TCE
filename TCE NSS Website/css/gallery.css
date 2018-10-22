@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  position: fixed;
+  overflow: hidden;
+  top: -97%;
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  -webkit-transition: all 0.5s;
+}
+
+nav ul li {
+  cursor: pointer;
+  height: 150px;
+  width: 150px;
+  background: #1abc9c;
+  margin: 20px;
+  float: left;
+}
+
+nav.show {
+  top: 0;
+}
+
+.picture {
+  height: 556px;
+  width: 100%;
+}
+
+.picture .bkg {
+  height: 100%;
+  width: 100%;
+}
+
+.picture1 .bkg {
+  background: url('image/nss1.png') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.picture2 .bkg {
+  background: url('image/nss2.png') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.picture3 .bkg {
+  background: url('image/nss3.png') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.picture4 .bkg {
+  background: url('image/nss4.png') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.picture5 .bkg {
+  background: url('image/nss5.png') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.picture6 .bkg {
+  background: url('image/nss6.png') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.picture7 .bkg {
+  background: url('image/nss7.png') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.info-section {
+  background: #34495e;
+  height: 100%;
+  width: 100%;
+  /*overflow: auto;
+  overflow-y: hidden;
+  overflow-x: scroll;*/
+}
+
+.info-wrapper {
+  width: 95%;
+  padding: 2.5%;
+}
+
+.info-section p {
+  color: white;
+  font-size: 24px;
+  font-family: Helvetica, sans-serif;
+}
+
+.info {
+  width: 300px;
+  height: 188px;
+  float: left;
+}
+
+/* Used to disable hover on scroll for performance */
+.disable-hover {
+  pointer-events: none;
+}
+
+/* CUSTOM SCROLLBARS */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+}

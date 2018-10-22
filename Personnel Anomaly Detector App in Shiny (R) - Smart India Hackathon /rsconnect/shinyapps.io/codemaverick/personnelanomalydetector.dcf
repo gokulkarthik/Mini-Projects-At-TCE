@@ -1,0 +1,11 @@
+name: personnelanomalydetector
+title:
+account: codemaverick
+server: shinyapps.io
+appId: 151567
+bundleId: 682921
+url: https://codemaverick.shinyapps.io/personnelanomalydetector/
+when: 1484712386.65877
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: PAD-1_1.R|uid_atom1.r|Docs/RFID_Cooked.csv|ScreenShots/1)HomePage.JPG|ScreenShots/2)RawData.JPG|ScreenShots/3)PreparedData.JPG|ScreenShots/4)Outlier1.JPG|ScreenShots/5)Outlier2.JPG|ScreenShots/6)Defaulters.JPG|ScreenShots/Attendance1.JPG|ScreenShots/Attendance2.JPG|ScreenShots/Attendance3.JPG|ScreenShots/Theme2.JPG|ScreenShots/Theme3.JPG|ScreenShots/Theme4.JPG

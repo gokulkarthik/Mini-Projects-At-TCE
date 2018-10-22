@@ -1,0 +1,47 @@
+<Vijay>
+</Vijay>
+
+<Gokul>
+	</img src = "sample data">
+	This is the sample RFID data provided by the Ministry in the hackathon website. 
+	It contains employee id, date, time stamp and the IN-OUT status in a csv format.
+	Let us see how this data is derived...
+	BARC employees use their IDs to mark the attendance. 
+	Then they have to press the IN/OUT Button to mark the status in the database.
+	Otherwise no data will be added. If anyone forgot to press the IN button with in some time, then they will be marked 'absent'.
+	They don't need to worry about the OUT status as it is optional.
+	All such regulations and dataset descriptons are not explained in the hackathon website. 
+	We got it from our college alumnus @Mr.Kathick, who is working at BARC in operational area..(NSS) 
+
+	We developed the application "R-PAD" in R , which is a powerful statistical computing language primarily used for data analytics.
+	The app would provide data about the Outliers, Defaulters and also monitor the Attendance.
+	</img src = "R-PAD">
+	The Shiny framework of R is used to develop this web application.
+	<div label = "Working of the application"> 
+		The user can upload the data file here..
+		Once the file gets uploaded, the file is pre processed to the required format in the backend. 
+		Data Analytics of the pre processed data is done in the R server.
+		In the Outliers tab, we can get the list of Late Comers and Early Goers and if you need to download the data, you can!
+		This Box Plot clearly shows, Employees are only late during the IN and early upon exit..
+		The Defaulters tab list the employees those who marked the IN status but not Out status here and the inverse is displayed here.
+		Attendace list with presentees and absentees are viewed here.
+		We developed this app as a reactive one..
+		So if you modify the date here, this pie chart and the employees list will update.
+		This date Range is applicable for Outliers and Defaulters. 
+		Currently the date range finds only the outliers of 1/1/16 and if we extend this, we will get a new updated list and the plots.
+		Performance Tab is Comming soon! It is under construction..
+		If the user gives the employe id, it will show his performance based on the attendance, outliers and defaulters data.
+		We are also planning to display the 'Top 5 Performers of the week/month' in reactive to the input date range.
+	</div>
+</Gokul>
+
+<Sangeetha>
+	
+</Sangeetha>
+
+<Gokul>
+	
+</Gokul>
+
+<Vijay>
+</Vijay>

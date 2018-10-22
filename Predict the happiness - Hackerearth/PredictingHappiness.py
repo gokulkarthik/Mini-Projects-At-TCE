@@ -1,0 +1,152 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Oct 17 13:21:05 2017
+
+@author: gokul
+"""
+
+#%% Setting Env and importing libraries
+import os
+os.chdir("/media/gokul/Academic/!.Events/_.HackerEarth/Predict the happiness")
+os.getcwd()
+
+import pandas as pd
+import numpy as np
+#%% Reading dateset and selecting attributes
+# Read in the data
+df = pd.read_csv('train.csv')
+
+print(df.columns)
+df = df[["Description", "Is_Response"]]
+df["Is_Response"] = np.where(df["Is_Response"]=="not happy", 0, 1)
+
+# Checking Class imbalance
+print(df["Is_Response"].mean())
+
+#%% Fucntion to clean the description
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+import re
+stops = set(stopwords.words("english"))
+def cleanData(text, lowercase = True, remove_stops = True, stemming = True):
+    txt = str(text)
+    txt = re.sub(r'[^A-Za-z0-9\s]',r'',txt)
+    txt = re.sub(r'\n',r' ',txt)
+    
+    if lowercase:
+        txt = " ".join([w.lower() for w in txt.split()])
+        
+    if remove_stops:
+        txt = " ".join([w for w in txt.split() if w not in stops])
+    
+    if stemming:
+        st = PorterStemmer()
+        txt = " ".join([st.stem(w) for w in txt.split()])
+
+    return txt
+    
+#%% Applying Text Cleaning
+df["Description"] = df["Description"].apply(cleanData)
+df["Description"].head()
+
+#%% Modifying to numpy array
+X = df['Description'].values
+y = df["Is_Response"].values
+
+#%% Finding Word Distibution and frequent words
+import nltk
+desc_list = []
+desc_lol = [nltk.word_tokenize(desc) for desc in df["Description"]]
+for d in desc_lol:
+    desc_list += d
+print(desc_list[:100])
+distribution = nltk.FreqDist(desc_list)
+vocabulary = distribution.keys()
+freq_words = [word for word in vocabulary if distribution[word] > 1000 ]
+print(freq_words)
+
+#%% Finding Top 15 words
+dist_tuple = distribution.items()
+dist_tuple = sorted(dist_tuple, key = lambda x : x[1], reverse = True)
+print("Most Freq Words : ", dist_tuple[:15])
+
+#%% Vectorizing the Description
+from sklearn.feature_extraction.text import CountVectorizer
+vect = CountVectorizer(min_df=100, ngram_range=(2,3), max_features = 1000).fit(X)
+X_vectorized = vect.transform(X)
+print(len(vect.get_feature_names()))
+print(vect.get_feature_names())
+
+#%% Writing to csv file for later use
+##result = pd.DataFrame(X_vectorized)
+
+#%% cross Validation
+from sklearn.model_selection import cross_val_score
+
+from sklearn.naive_bayes import GaussianNB
+model1 = GaussianNB()
+
+from sklearn.naive_bayes import MultinomialNB
+model2 = MultinomialNB()
+
+from sklearn.svm import SVC
+model3 = SVC()
+
+from sklearn.linear_model import LogisticRegression
+model4 = LogisticRegression()
+
+from sklearn.ensemble import RandomForestClassifier
+model5 = RandomForestClassifier()
+
+models = [model1, model2, model3, model4, model5]
+
+model_acc = dict()
+for model in models:
+    accuracies = cross_val_score(model, X_vectorized.toarray(), y, cv=3, n_jobs=-1)
+    model_acc[type(model)] = accuracies.mean()
+    
+print(model_acc)
+'''
+{<class 'sklearn.ensemble.forest.RandomForestClassifier'>: 0.70576885994491911, 
+<class 'sklearn.linear_model.logistic.LogisticRegression'>: 0.74907529595285605, 
+<class 'sklearn.svm.classes.SVC'>: 0.72053838478902688, 
+<class 'sklearn.naive_bayes.MultinomialNB'>: 0.7420116728048386, 
+<class 'sklearn.naive_bayes.GaussianNB'>: 0.6738671438008802}
+'''
+
+#%% Grid Search
+from sklearn.model_selection import GridSearchCV
+parameters = [{'penalty':['l2', 'l1'], 'class_weight':['balanced', {0:1, 1:2}, {0:1, 1:3}], 'solver':['liblinear','saga']}]
+grid_search = GridSearchCV(estimator = model4,
+                           param_grid = parameters,
+                           scoring = 'accuracy',
+                           cv = 10,
+                           n_jobs = -1)
+grid_search = grid_search.fit(X_vectorized.toarray(), y)
+best_accuracy = grid_search.best_score_
+best_parameters = grid_search.best_params_
+print(best_accuracy)
+print(best_parameters)
+'''
+0.728629405117
+{'penalty': 'l2', 'solver': 'saga', 'class_weight': {0: 1, 1: 2}}
+'''
+
+#%% Cleaning Test dat
+test_df = pd.read_csv('test.csv')
+X_test = test_df["Description"].apply(cleanData)
+
+#%% Vectorizing
+X_test_vectorized = vect.transform(X_test).toarray()
+
+#%% Prediction
+best_model = LogisticRegression(penalty='l2', solver='saga', class_weight={0: 1, 1: 4}).fit(X_vectorized.toarray(), y)
+y_predicted = best_model.predict(X_test_vectorized)
+y_predicted.mean()
+
+#%% Writing to csv file
+result = pd.DataFrame(test_df['User_ID'])
+result["Is_Response"] = np.where(y_predicted == 0, "not happy", "happy")
+result.to_csv('Result2.csv', index=False)
+#%%

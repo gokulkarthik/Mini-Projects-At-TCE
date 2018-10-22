@@ -1,0 +1,11 @@
+name: precog_task
+title: PreCog Task
+account: gokulk
+server: shinyapps.io
+appId: 246762
+bundleId: 1127510
+url: https://gokulk.shinyapps.io/precog_task/
+when: 1512974388.83434
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|.~lock.delhi_pollution_tweets.csv#|.~lock.sample_tweets.csv#|.~lock.sample_tweets_2.csv#|TweetAnalysis.R|delhi_pollution_tweets (copy).csv|sample_tweets.csv
