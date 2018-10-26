@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ThoughtX Pro Review</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min2.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet">
+        <script src="{{ url_for('static', filename='jquery-3.1.1.js') }}"></script>
+        <script src="{{ url_for('static', filename='bootstrap.min.js') }}" defer></script>
+        <script src="{{ url_for('static', filename='jquery-3.1.1.js')}}"></script>
+        <script src="{{ url_for('static', filename='helper.js')}}"></script>
+        <script id="test" src="{{ url_for('static', filename='helper2.js')}}" defer></script>
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    </head>
+<body>
+    <header class="header-style">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="title-super text-thin">ThoughtX</h3>
+          <h3 class="text-uppercase">The Pro Review</h3>
+        </div>
+        <div class="col-md-6">
+          <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" class="img-responsive title-logo"/>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+    <div class="row">
+      <div class="search-title">Search by Features (or) <a href="https://thoughtx.herokuapp.com">Search by product</a></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <form class="app-ide" id="f1"> 
+            <div class="form-group">
+              <input type="text" class="form-control" id="f11" placeholder="Select Feature 1" onkeyup="filterFunction('f11', 'p11')">
+              <select multiple class="form-control" id="p11">
+              </select>
+              <button type="button" class="btn btn-primary" id="formbtn">Get Products</button>
+              <a href="#tpc"><button type="button" class="btn btn-primary" id="formbtn2">Go to top products</button></a>
+              <a href="#ppc"><button type="button" class="btn btn-primary" id="formbtn3">Go to Popular products</button></a>
+            </div>
+          </form>
+      </div>
+      <div class="col-md-4">
+        <form class="app-ide" id="f1"> 
+            <div class="form-group">
+              <input type="text" class="form-control" id="f22" placeholder="Select Feature 2" onkeyup="filterFunction('f22', 'p22')">
+              <select multiple class="form-control" id="p22">
+              </select>
+            </div>
+          </form>
+      </div>
+      <div class="col-md-4">
+        <form class="app-ide" id="f1"> 
+            <div class="form-group">
+              <input type="text" class="form-control" id="f33" placeholder="Select Feature 3" onkeyup="filterFunction('f33', 'p33')">
+              <select multiple class="form-control" id="p33">
+              </select>
+            </div>
+          </form>
+      </div>
+    </div>
+    <div class="row" id="emo">
+      <div class="emo-tile"><div class="emox">😡</div> Angry: </div>
+      <div class="emo-tile"><div class="emox">😣</div> Sad: </div>
+      <div class="emo-tile"><div class="emox">😐</div> Neutral: </div>
+      <div class="emo-tile"><div class="emox">😊</div> Happy: </div>
+      <div class="emo-tile"><div class="emox">😮</div> Surprise: </div>
+    </div>
+    <div class="row" id="resultCards">
+      <div class="row text-uppercase search-title" id="search-title">Products based on features</div>
+      <div class="card-container">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="top-container">
+        <div class="title-super text-uppercase" id="tpc">Top Products</div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#Rank</th>
+              <th scope="col">Product</th>
+              <th scope="col">Rating</th>
+            </tr>
+          </thead>
+          <tbody id="top-prod">
+          </tbody>
+        </table>
+        <div class="title-super text-uppercase" id="ppc">Popular Products</div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#Rank</th>
+              <th scope="col">Product</th>
+              <th scope="col">No.of.Sales</th>
+            </tr>
+          </thead>
+          <tbody id="pop-prod">
+          </tbody>
+        </table>
+        </div>
+    </div>
+
+    <footer>
+      <div class="app-footer">
+        <p class="portfolio-footer text-center">ThoughtX 2018</p>
+      </div>
+    </footer>
+	<script>
+    //while(typeof prodList === 'undefined') {}
+    var featList = {
+      features: ['charger', 'color', 'cover', 'day', 'design', 'device', 'fit', 'get','hand', 'headset', 'iPhone', 'issue', 'life', 'look', 'lot', 'mount', 'order', 'phone', 'place', 'plug', 'pocket', 'power', 'price', 'problem', 'product', 'protection', 'protector', 'purchase', 'quality',    'review', 'screen', 'side', 'size', 'something', 'sound', 'thing', 'time', 'unit', 'use', 'volume', 'way', 'work']
+    };
+    var frbt = $("#formbtn2");
+    var frbt2 = $("#formbtn3");
+    var tbl = $(".top-container");
+    var searchTitle = $("#search-title");
+    $("#emo").hide();
+    frbt.hide();
+    frbt2.hide();
+    tbl.hide();
+    searchTitle.hide();
+    var script = document.querySelector('#test');
+    function selPopulator() {
+      featList["features"].forEach(function(item) {
+        var dtz = "<option>"+item+"</option>";
+        $("#p11").append(dtz);
+        $("#p22").append(dtz);
+        $("#p33").append(dtz);
+      });
+
+
+    };
+
+    function checkVariable() {
+      if (typeof prodList !== 'undefined') {
+        selPopulator();
+      }
+    }
+    setTimeout(checkVariable, 1000);
+
+		$('#formbtn').on('click', function(event){
+        $(".card-container").empty();
+        //var pid = $("#p1").val();
+        var f1 = $("#p11").val();
+        var f2 = $("#p22").val();
+        var f3 = $("#p33").val();
+        if(f1=="" || f2=="" || f3=="") {
+          alert("Enter Features");
+          return false;
+        }
+        
+        //var pval = $("#p1").val();
+        var obj = {'features': f1+";"+f2+";"+f3};
+        console.log(obj);
+        $.ajax({
+          url:"https://thoughtx.herokuapp.com/t2/",
+          type:"GET",
+          crossDomain:true,
+          data: obj,
+          success: function(data) {
+            updateView(data);
+          }
+        });
+
+       return false;
+   });
+    function updateView(data) {
+      searchTitle.show();
+      data = JSON.parse(data);
+      console.log(data);
+      prodData = data["products"];
+      var i = 0;
+      var cds = $(".card-container");
+      prodData.forEach(function(prod) {
+        if(i%3==0) cds.append(cardgroup);
+        var ct = cardTemplate.replace("%title%", prod["title"]);
+        ct = ct.replace("%desc%", "ASIN: "+prod["asin"]);
+        ct = ct.replace("%price%", "");
+        ct = ct.replace("%imgurl%", "{{ url_for('static', filename='item-icon.png') }}");
+        ct = ct.replace("AI Score: %score%", "");
+        ct = ct.replace("alert alert-success", "");
+        $(".card-group").last().append(ct);
+        i+=1;
+      });
+    };
+    function updateTop(data) {
+      frbt.show();
+      frbt2.show();
+      tbl.show();
+      //$("#emo").show();
+      var topData = data["top"];
+      var popData = data["popular"];
+      var topTab = $("#top-prod");
+      topTab.empty();
+      var t1 = "<tr><th>%1%</th><th>%2%</th><th>%3%</th></tr>";
+      var ix = 1;
+      topData.forEach(function(itop) {
+        var t2 = t1.replace("%1%", ix).replace("%2%", itop["title"]).replace("%3%", itop["rating"]);
+        topTab.append(t2);
+        ix+=1;
+      });
+
+      var topTab = $("#pop-prod");
+      topTab.empty();
+      var t1 = "<tr><th>%1%</th><th>%2%</th><th>%3%</th></tr>";
+      var ix = 1;
+      popData.forEach(function(itop) {
+        var t2 = t1.replace("%1%", ix).replace("%2%", itop["title"]).replace("%3%", itop["sales"]);
+        topTab.append(t2);
+        ix+=1;
+      });
+      var stx = []
+      $.each(data['senti'], function(i, v) {
+        stx.push(v);
+      });
+      $("#emo").empty();
+      $("#emo").append(emoData);
+      var t = $(".emo-tile");
+      //var stx = data["sentil"];
+      var i=0;
+      t.each(function() {$(this).append(stx[i]);i+=1});
+    }
+	</script>
+</body>
+</html>

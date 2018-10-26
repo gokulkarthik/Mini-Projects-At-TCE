@@ -1,0 +1,11 @@
+pandas
+numpy
+matplotlib
+seaborn
+flask
+flask-restful
+flask-jsonpify
+gunicorn
+jsonschema
+scipy
+scikit-learn

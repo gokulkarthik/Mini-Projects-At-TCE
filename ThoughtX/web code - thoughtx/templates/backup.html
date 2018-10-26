@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ThoughtX Pro Review</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min2.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet">
+        <script src="{{ url_for('static', filename='jquery-3.1.1.js') }}"></script>
+        <script src="{{ url_for('static', filename='bootstrap.min.js') }}" defer></script>
+        <script src="{{ url_for('static', filename='jquery-3.1.1.js')}}"></script>
+        <script src="{{ url_for('static', filename='helper.js')}}"></script>
+        <script id="test" src="{{ url_for('static', filename='helper2.js')}}" defer></script>
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    </head>
+<body>
+    <div class="container">
+    
+    <header class="header-style">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="title-super text-thin">ThoughtX</h3>
+          <h3 class="text-uppercase">The Pro Review</h3>
+        </div>
+        <div class="col-md-6">
+          <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" class="img-responsive title-logo"/>
+        </div>
+      </div>
+    </header>
+    
+    <div class="row">
+        <form class="app-ide" id="formthink"> 
+            <div class="form-group">
+              <label for="p1">Search any product</label>
+              <input type="text" class="form-control" id="f1" placeholder="Filter Search" onkeyup="filterFunction()">
+              <select multiple class="form-control" id="p1">
+              </select>
+              <button type="button" class="btn btn-primary" id="formbtn">Get Score</button>
+            </div>
+          </form>
+    </div>
+    <div class="row" id="resultCards">
+      <div class="card-container">
+      </div>
+    </div>
+
+    <footer>
+      <div class="app-footer">
+        <p class="portfolio-footer text-center">ThoughtX 2018</p>
+      </div>
+    </footer>
+	<script>
+    var script = document.querySelector('#test');
+    var lst = $("#p1");
+    prodList["optList"].forEach(function(item) {
+      lst.append("<option>"+item+"</option>");
+    });
+
+		$('#formbtn').on('click', function(event){
+        alert($("#p1").prop('selectedIndex'));
+        var pval = $("#p1").val();
+        var obj = {'prodName': pval}
+        console.log(obj);
+        $.ajax({
+            type: 'GET',
+            url: 'http://127.0.0.1:5000/t1',
+            dataType: 'json',
+            data: obj,
+            contentType : 'application/json',
+             headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+            success: function(data) {
+                updateView(data);
+            }
+        });
+
+       return false;
+   });
+    function updateView(data) {
+      data = JSON.parse(data);
+      console.log(data);
+      prodData = data["products"];
+      var i = 0;
+      var cds = $(".card-container");
+      prodData.forEach(function(prod) {
+        if(i%3==0) cds.append(cardgroup);
+        var ct = cardTemplate.replace("%title%", prod["title"]);
+        ct = ct.replace("%desc%", prod["desc"]);
+        ct = ct.replace("%price%", prod["price"]);
+        ct = ct.replace("%imgurl%", "http://webiconspng.com/wp-content/uploads/2016/12/Smartphone-Vector-Art-Icon.png");
+        $(".card-group").last().append(ct);
+        i+=1;
+      });
+    };
+	</script>
+</body>
+</html>

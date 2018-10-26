@@ -1,0 +1,101 @@
+body {
+	font-family: "Lato", sans-serif;
+	color: #747784;	
+}
+
+
+img {
+	margin: 0 auto;
+}
+
+
+a {
+	font-size: 20px;
+}
+
+
+.text-thin {
+}
+
+
+.text-muted {
+	color: #bcbbbb;
+}
+
+
+.title-super {
+	font-size: 60px;
+}
+
+
+.title-logo {
+	margin: 20px;
+	width: 20%;
+	float: right;
+}
+
+
+.portfolio-footer {
+	margin: 20px auto;
+}
+
+
+.app-sidebar {
+}
+
+
+.app-ide {
+	margin: 0 auto;
+	margin-top: 20px;
+	font-size: 30px;
+}
+
+button {
+	margin: 5px 0;
+}
+
+.header-style {
+	background-color: #95a7b34a;
+	padding-left: 20px;
+	font-weight: 200;
+}
+
+#form {
+	margin-top: 20px;
+}
+
+.card-container {
+	margin: 0 auto;
+}
+
+.card {
+	min-width: 250px;
+	margin: 20px;
+	text-align: center;
+}
+
+.card-img-top {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.emo-tile {
+	width: 20%;
+	font-size: 20px;
+}
+
+.emox {
+	font-size: 40px;
+}
+
+.search-title {
+	font-size: 26px !important;
+	margin: 0 auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+#resultCard {
+	margin-top: 30px;
+}
