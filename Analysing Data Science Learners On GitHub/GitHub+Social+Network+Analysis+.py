@@ -73,7 +73,7 @@
 from github import Github
 
 USER = "GokulKarthik"
-PASSWD = "gh.gokul98"
+PASSWD = "xxxx"
 g = Github(USER, PASSWD)
 
 for repo in g.get_user().get_repos():
